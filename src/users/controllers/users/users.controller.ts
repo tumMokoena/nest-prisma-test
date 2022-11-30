@@ -8,8 +8,11 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { Response, Request, query } from 'express';
+import { winstonLogger } from 'src/api_logger';
 import { CreateUserDto } from 'src/users/Dtos/createUser.Dto';
 import { UsersService } from 'src/users/services/users/users.service';
+
+const TAG = "UsersController";
 
 @Controller('users')
 export class UsersController {
@@ -36,7 +39,13 @@ export class UsersController {
 
   @Post()
   createUser(@Body() userData: CreateUserDto, @Res() res: Response) {
+    
     const users = this.usersService.createuser(userData);
+
+    winstonLogger?.info(
+      `User with email: ${userData.email}, username: ${userData.username} created successfully`,
+      TAG
+    );
 
     res.status(201).json({ success: true, data: users });
   }
