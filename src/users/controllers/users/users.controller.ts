@@ -7,14 +7,16 @@ import {
   Body,
   ParseIntPipe,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Response, Request, query } from 'express';
 import { winstonLogger } from 'src/api_logger';
 import { CreateUserDto } from 'src/users/Dtos/createUser.Dto';
 import { UsersService } from 'src/users/services/users/users.service';
 
-const TAG = "UsersController";
+const TAG = "usersController";
 
 @Controller('users')
+@ApiTags('Users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 

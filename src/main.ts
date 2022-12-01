@@ -12,14 +12,14 @@ async function bootstrap() {
 
   //initialize Swagger
   const config = new DocumentBuilder()
-  .setTitle('Users example')
+  .setTitle('Users API')
   .setDescription('The Users API description')
   .setVersion('1.0')
   .addTag('Users')
   .build();
 
-const document = SwaggerModule.createDocument(app, config);
-SwaggerModule.setup('api', app, document);
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/', app, document);
 
   await app.listen(3000);
 }

@@ -7,18 +7,22 @@ export class UsersService {
     {
       username: 'Bob',
       email: 'Bob@email.com',
+      password: 'password123'
     },
     {
       username: 'Ben',
       email: 'Ben@email.com',
+      password: 'password123'
     },
     {
       username: 'Tom',
       email: 'Tom@email.com',
+      password: 'password123'
     },
     {
       username: 'Steve',
       email: 'Steve@email.com',
+      password: 'password123'
     },
   ];
 
@@ -27,7 +31,9 @@ export class UsersService {
   }
 
   fetchUserByUsername(username : string){
-    
+
+    const user = this.fakeUsers.find(user => user.username === username);
+    return user
   }
 
   createuser(newUser: createUser) {
